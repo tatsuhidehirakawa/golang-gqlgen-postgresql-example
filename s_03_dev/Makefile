@@ -17,3 +17,10 @@ run:
 
 test:
 	go test ./...
+
+
+insert.data.api:
+	@docker cp ../s_01_src/125api_src/src 125api_dev:/go
+
+eject.data.api:
+	@docker cp 125api_dev:/go/src ../s_01_src/125api_src
