@@ -24,7 +24,9 @@ func NewUserRepository(db *io.SQLdatabase) *UserRepository {
 
 func (r *UserRepository) GetUser(ctx context.Context, userID string) (*entity.User, error) {
 	var user entity.User
-	err := r.database.SQLX.Get(&user, "SELECT id, name FROM users WHERE id=$1", userID)
+	// err := r.database.SQLX.Get(&user, "SELECT id, name FROM users WHERE id=$1", userID)
+	err := r.database.SQLX.Get(&user, "SELECT offer_id, account_id FROM offer_list WHERE offer_id=$1", userID)
+
 	if err != nil {
 		switch err {
 		case sql.ErrNoRows:
