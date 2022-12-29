@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  125api_dev:
+    container_name: 125api_dev
+    build:
+      context: ../s_01_src/125api_src/src
+      dockerfile: ../../../s_03_dev/125api_dev/Dockerfile
+    tty: true
+    stdin_open: true
+    volumes:
+      - api-vol:/go/src
+    ports:
+      - 8080:8080
+    depends_on:
+      - 134dbs_dev
+    env_file: ../dev.env
+    networks:
+      - STGprd_gqlgen_dev_network
+
+  134dbs_dev:
+    container_name: 134dbs_dev
+    image: postgres:14
+    ports:
+      - 5432:5432
+    volumes:
+      - dbs-vol:/var/lib/postgresql/data
+      - ../s_01_src/134dbs_src/:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_DB: example
+      POSTGRES_PASSWORD: password
+    networks:
+      - STGprd_gqlgen_dev_network
+
+volumes:
+  api-vol:
+  dbs-vol:
+
+networks:
+  STGprd_gqlgen_dev_network:
+    driver: bridge
