@@ -14,7 +14,7 @@ SELECT account_id, account_name FROM account_master
 WHERE account_id = $1 LIMIT 1
 `
 
-func (q *Queries) GetAccountMaster(ctx context.Context, accountID int32) (AccountMaster, error) {
+func (q *Queries) GetAccountMaster(ctx context.Context, accountID string) (AccountMaster, error) {
 	row := q.db.QueryRowContext(ctx, getAccountMaster, accountID)
 	var i AccountMaster
 	err := row.Scan(&i.AccountID, &i.AccountName)
@@ -26,7 +26,7 @@ SELECT offer_id, account_id FROM offer_list
 WHERE offer_id = $1 LIMIT 1
 `
 
-func (q *Queries) GetOfferList(ctx context.Context, offerID int32) (OfferList, error) {
+func (q *Queries) GetOfferList(ctx context.Context, offerID string) (OfferList, error) {
 	row := q.db.QueryRowContext(ctx, getOfferList, offerID)
 	var i OfferList
 	err := row.Scan(&i.OfferID, &i.AccountID)

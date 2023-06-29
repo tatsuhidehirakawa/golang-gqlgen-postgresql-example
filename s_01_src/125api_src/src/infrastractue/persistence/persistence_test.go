@@ -10,13 +10,15 @@ import (
 )
 
 var (
-	userRepo *UserRepository
+	userRepo          *UserRepository
+	accountMasterRepo *MasterAccountRepository
 )
 
 func TestMain(m *testing.M) {
 	cfg, _ := config.LoadConfig(context.Background())
 	db, _ := io.NewSQLdatabase(cfg)
 	userRepo = NewUserRepository(db)
+	accountMasterRepo = NewMasterAccountRepository(db.SQLC)
 
 	res := m.Run()
 

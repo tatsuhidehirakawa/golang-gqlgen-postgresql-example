@@ -9,11 +9,11 @@ import (
 )
 
 type AccountMaster struct {
-	AccountID   int32
+	AccountID   string
 	AccountName string
 }
 
 type OfferList struct {
-	OfferID   int32
-	AccountID sql.NullInt32
+	OfferID   string
+	AccountID sql.NullString
 }

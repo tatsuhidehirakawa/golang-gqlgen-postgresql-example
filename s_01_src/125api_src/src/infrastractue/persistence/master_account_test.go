@@ -5,45 +5,30 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/gqlgensamples/golang-gqlgen-postgresql-example/domain/entity"
+	sqlc "github.com/gqlgensamples/golang-gqlgen-postgresql-example/db"
 )
 
-func TestUserRepo_GetUser(t *testing.T) {
+func TestAccountMasterRepo_GetAccountMaster(t *testing.T) {
 	tests := []struct {
 		name    string
 		userID  string
-		want    *entity.User
+		want    *sqlc.AccountMaster
 		wantErr error
 	}{
 		{
 			name:   "ok",
-			userID: "1",
-			want: &entity.User{
-				ID:   "1",
-				Name: "101",
+			userID: "101",
+			want: &sqlc.AccountMaster{
+				AccountID:   "101",
+				AccountName: "account1",
 			},
-			wantErr: nil,
-		},
-		{
-			name:   "ok",
-			userID: "2",
-			want: &entity.User{
-				ID:   "2",
-				Name: "102",
-			},
-			wantErr: nil,
-		},
-		{
-			name:    "notExistUser",
-			userID:  "999",
-			want:    nil,
 			wantErr: nil,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := userRepo.GetUser(context.Background(), tt.userID)
+			got, err := accountMasterRepo.GetMasterAccount(context.Background(), tt.userID)
 			if diff := cmp.Diff(tt.wantErr, err); len(diff) != 0 {
 				t.Errorf("mismatch (-want +got):\n%s", diff)
 			}
