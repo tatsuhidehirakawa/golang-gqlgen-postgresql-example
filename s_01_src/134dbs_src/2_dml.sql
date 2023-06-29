@@ -1,10 +1,12 @@
-INSERT INTO offer_list VALUES  (1,'user123');
-INSERT INTO offer_list VALUES  (2,'user234');
-INSERT INTO offer_list VALUES  (3,'user345');
-INSERT INTO offer_list VALUES  (4,'user456');
+-- account_master `offer_list`とのリレーションがわかりやすいように101~104のaccount_idを持つレコードを作成
+INSERT INTO account_master VALUES  (101,'account1');
+INSERT INTO account_master VALUES  (102,'account2');
+INSERT INTO account_master VALUES  (103,'account3');
+INSERT INTO account_master VALUES  (104,'account4');
 
--- INSERT INTO users VALUES  (1,'user1');
--- INSERT INTO users VALUES  (2,'user2');
--- INSERT INTO users VALUES  (3,'user3');
--- INSERT INTO users VALUES  (4,'user4');
-   
+-- offer_list
+INSERT INTO offer_list VALUES  (1,101);
+INSERT INTO offer_list VALUES  (2,102);
+INSERT INTO offer_list VALUES  (3,103);
+INSERT INTO offer_list VALUES  (4,104);
+
