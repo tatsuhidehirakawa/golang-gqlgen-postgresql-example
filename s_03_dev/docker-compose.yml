@@ -29,7 +29,7 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_DB: example
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: passw0rd
     networks:
       - STGprd_gqlgen_dev_network
 

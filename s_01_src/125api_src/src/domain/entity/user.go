@@ -2,9 +2,11 @@
 package entity
 
 type User struct {
-	ID   string `db:"id"`
-	Name string `db:"name"`
+	ID   string `db:"offer_id"`
+	Name string `db:"account_id"`
 }
 
-
-
+// type User struct {
+// 	ID   string `db:"id"`
+// 	Name string `db:"name"`
+// }
