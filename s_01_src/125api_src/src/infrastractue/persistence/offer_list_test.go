@@ -11,13 +11,11 @@ import (
 func TestOfferListRepository_OfferLists(t *testing.T) {
 	tests := []struct {
 		name    string
-		userID  string
 		want    []sqlc.OfferList
 		wantErr error
 	}{
 		{
-			name:   "ok",
-			userID: "101",
+			name: "ok",
 			want: []sqlc.OfferList{
 				{OfferID: "1", AccountID: "101"},
 				{OfferID: "2", AccountID: "102"},
