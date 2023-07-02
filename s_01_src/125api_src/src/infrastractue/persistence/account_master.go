@@ -21,7 +21,7 @@ func NewAccountMaterRepository(sqlc *sqlc.Queries) *AccountMasterRepository {
 }
 
 func (r *AccountMasterRepository) GetAccountMaster(ctx context.Context, userID string) (*sqlc.AccountMaster, error) {
-	accountMaster, err := r.sqlc.GetAccountMaster(ctx, userID)
+	accountMaster, err := r.sqlc.AccountMaster(ctx, userID)
 	if err != nil {
 		switch err {
 		case sql.ErrNoRows:

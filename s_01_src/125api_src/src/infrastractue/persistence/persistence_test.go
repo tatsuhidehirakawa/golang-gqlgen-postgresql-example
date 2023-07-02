@@ -12,6 +12,7 @@ import (
 var (
 	userRepo          *UserRepository
 	accountMasterRepo *AccountMasterRepository
+	offerListRepo     *OfferListRepository
 )
 
 func TestMain(m *testing.M) {
@@ -19,6 +20,7 @@ func TestMain(m *testing.M) {
 	db, _ := io.NewSQLdatabase(cfg)
 	userRepo = NewUserRepository(db)
 	accountMasterRepo = NewAccountMaterRepository(db.SQLC)
+	offerListRepo = NewOfferListRepository(db.SQLC)
 
 	res := m.Run()
 

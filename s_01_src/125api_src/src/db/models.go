@@ -4,9 +4,7 @@
 
 package db
 
-import (
-	"database/sql"
-)
+import ()
 
 type AccountMaster struct {
 	AccountID   string
@@ -15,5 +13,5 @@ type AccountMaster struct {
 
 type OfferList struct {
 	OfferID   string
-	AccountID sql.NullString
+	AccountID string
 }

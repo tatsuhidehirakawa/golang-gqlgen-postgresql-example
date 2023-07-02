@@ -11,6 +11,7 @@ type Repositories struct {
 	sqlc         *sqlc.Queries
 	User         repository.IUserRepository
 	AccountMater repository.IMasterAccountRepository
+	OfferList    repository.IOfferListRepository
 }
 
 func NewRepositories(db *io.SQLdatabase) (*Repositories, error) {
@@ -19,5 +20,6 @@ func NewRepositories(db *io.SQLdatabase) (*Repositories, error) {
 		sqlc:         db.SQLC,
 		User:         NewUserRepository(db),
 		AccountMater: NewAccountMaterRepository(db.SQLC),
+		OfferList:    NewOfferListRepository(db.SQLC),
 	}, nil
 }
