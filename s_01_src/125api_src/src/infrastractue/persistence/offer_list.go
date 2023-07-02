@@ -2,7 +2,6 @@ package persistence
 
 import (
 	"context"
-	"database/sql"
 
 	sqlc "github.com/gqlgensamples/golang-gqlgen-postgresql-example/db"
 	"github.com/gqlgensamples/golang-gqlgen-postgresql-example/domain/repository"
@@ -23,12 +22,11 @@ func NewOfferListRepository(sqlc *sqlc.Queries) *OfferListRepository {
 func (r *OfferListRepository) OfferLists(ctx context.Context) ([]sqlc.OfferList, error) {
 	ol, err := r.sqlc.OfferLists(ctx)
 	if err != nil {
-		switch err {
-		case sql.ErrNoRows:
-			return nil, nil
-		default:
-			return nil, err
-		}
+		return nil, err
 	}
+	if len(ol) == 0 {
+		return []sqlc.OfferList{}, nil
+	}
+
 	return ol, nil
 }
