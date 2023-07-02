@@ -8,19 +8,19 @@ import (
 	"github.com/gqlgensamples/golang-gqlgen-postgresql-example/domain/repository"
 )
 
-type MasterAccountRepository struct {
+type AccountMasterRepository struct {
 	sqlc *sqlc.Queries
 }
 
-var _ repository.IMasterAccountRepository = (*MasterAccountRepository)(nil)
+var _ repository.IMasterAccountRepository = (*AccountMasterRepository)(nil)
 
-func NewMasterAccountRepository(sqlc *sqlc.Queries) *MasterAccountRepository {
-	return &MasterAccountRepository{
+func NewAccountMaterRepository(sqlc *sqlc.Queries) *AccountMasterRepository {
+	return &AccountMasterRepository{
 		sqlc: sqlc,
 	}
 }
 
-func (r *MasterAccountRepository) GetMasterAccount(ctx context.Context, userID string) (*sqlc.AccountMaster, error) {
+func (r *AccountMasterRepository) GetMasterAccount(ctx context.Context, userID string) (*sqlc.AccountMaster, error) {
 	accountMaster, err := r.sqlc.GetAccountMaster(ctx, userID)
 	if err != nil {
 		switch err {
