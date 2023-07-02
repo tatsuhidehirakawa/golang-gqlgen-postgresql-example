@@ -8,7 +8,7 @@ import (
 	sqlc "github.com/gqlgensamples/golang-gqlgen-postgresql-example/db"
 )
 
-func TestAccountMasterRepo_GetAccountMaster(t *testing.T) {
+func TestAccountMasterRepo_AccountMaster(t *testing.T) {
 	tests := []struct {
 		name    string
 		userID  string
@@ -28,7 +28,7 @@ func TestAccountMasterRepo_GetAccountMaster(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := accountMasterRepo.GetAccountMaster(context.Background(), tt.userID)
+			got, err := accountMasterRepo.AccountMaster(context.Background(), tt.userID)
 			if diff := cmp.Diff(tt.wantErr, err); len(diff) != 0 {
 				t.Errorf("mismatch (-want +got):\n%s", diff)
 			}

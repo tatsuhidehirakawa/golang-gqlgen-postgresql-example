@@ -20,7 +20,7 @@ func NewAccountMaterRepository(sqlc *sqlc.Queries) *AccountMasterRepository {
 	}
 }
 
-func (r *AccountMasterRepository) GetAccountMaster(ctx context.Context, userID string) (*sqlc.AccountMaster, error) {
+func (r *AccountMasterRepository) AccountMaster(ctx context.Context, userID string) (*sqlc.AccountMaster, error) {
 	accountMaster, err := r.sqlc.AccountMaster(ctx, userID)
 	if err != nil {
 		switch err {

@@ -7,5 +7,5 @@ import (
 )
 
 type IMasterAccountRepository interface {
-	GetAccountMaster(ctx context.Context, ID string) (*sqlc.AccountMaster, error)
+	AccountMaster(ctx context.Context, ID string) (*sqlc.AccountMaster, error)
 }
