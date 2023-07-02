@@ -8,19 +8,19 @@ import (
 	sqlc "github.com/gqlgensamples/golang-gqlgen-postgresql-example/db"
 )
 
-func TestAccountMasterRepo_GetAccountMaster(t *testing.T) {
+func TestOfferListRepository_OfferLists(t *testing.T) {
 	tests := []struct {
 		name    string
-		userID  string
-		want    *sqlc.AccountMaster
+		want    []sqlc.OfferList
 		wantErr error
 	}{
 		{
-			name:   "ok",
-			userID: "101",
-			want: &sqlc.AccountMaster{
-				AccountID:   "101",
-				AccountName: "account1",
+			name: "ok",
+			want: []sqlc.OfferList{
+				{OfferID: "1", AccountID: "101"},
+				{OfferID: "2", AccountID: "102"},
+				{OfferID: "3", AccountID: "103"},
+				{OfferID: "4", AccountID: "104"},
 			},
 			wantErr: nil,
 		},
@@ -28,15 +28,13 @@ func TestAccountMasterRepo_GetAccountMaster(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := accountMasterRepo.GetMasterAccount(context.Background(), tt.userID)
+			got, err := offerListRepo.OfferLists(context.Background())
 			if diff := cmp.Diff(tt.wantErr, err); len(diff) != 0 {
 				t.Errorf("mismatch (-want +got):\n%s", diff)
 			}
 			if diff := cmp.Diff(tt.want, got); len(diff) != 0 {
 				t.Errorf("mismatch (-want +got):\n%s", diff)
 			}
-
 		})
 	}
-
 }
