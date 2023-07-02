@@ -10,7 +10,7 @@ type Repositories struct {
 	db           *io.SQLdatabase
 	sqlc         *sqlc.Queries
 	User         repository.IUserRepository
-	AccountMater repository.IMasterAccountRepository
+	AccountMater repository.IAccountMasterRepository
 	OfferList    repository.IOfferListRepository
 }
 

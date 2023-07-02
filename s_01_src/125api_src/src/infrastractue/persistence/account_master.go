@@ -12,7 +12,7 @@ type AccountMasterRepository struct {
 	sqlc *sqlc.Queries
 }
 
-var _ repository.IMasterAccountRepository = (*AccountMasterRepository)(nil)
+var _ repository.IAccountMasterRepository = (*AccountMasterRepository)(nil)
 
 func NewAccountMaterRepository(sqlc *sqlc.Queries) *AccountMasterRepository {
 	return &AccountMasterRepository{

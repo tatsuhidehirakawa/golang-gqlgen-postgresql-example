@@ -6,6 +6,6 @@ import (
 	sqlc "github.com/gqlgensamples/golang-gqlgen-postgresql-example/db"
 )
 
-type IMasterAccountRepository interface {
+type IAccountMasterRepository interface {
 	AccountMaster(ctx context.Context, ID string) (*sqlc.AccountMaster, error)
 }
